@@ -67,7 +67,7 @@ public class EjemploBancoBCI {
 //        js.executeScript("window.scrollBy(0,200)", "");
 
 
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         driver.findElement(By.id("botonOculto")).click();
 
         String resultadoEsperado = "Tu código de seguimiento es";

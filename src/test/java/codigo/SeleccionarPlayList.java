@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class SeleccionarPlayList {
 
     public static void main(String[] args) throws InterruptedException {
@@ -16,7 +18,8 @@ public class SeleccionarPlayList {
 
         driver.get("https://open.spotify.com/intl-es?");
         driver.manage().window().maximize();
-        Thread.sleep(2000);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(100,TimeUnit.SECONDS);
 
         //Boton iniciar Sesion
         By locatorBtnLogin = By.xpath("(//button[@class='Button-sc-qlcn5g-0 fyugtm'])[2]");
@@ -32,10 +35,10 @@ public class SeleccionarPlayList {
         //BtnRecordarme más BtnLogin Spotify
         By locatorBtnRecordarme = By.xpath("//span[@class='Wrapper-sc-16y5c87-0 imHfsA']");
         driver.findElement(locatorBtnRecordarme).click();
-        Thread.sleep(3000);
+
         By locatorBtnLogin2 = By.id("login-button");
         driver.findElement(locatorBtnLogin2).click();
-        Thread.sleep(4000);
+
 
         /*
         //Selección de primer PlayList que aparezca
@@ -46,11 +49,11 @@ public class SeleccionarPlayList {
         //Seleccionar Play List Argentina
         By locatorBtnPlayListArg = By.xpath("//a[@href='/playlist/37i9dQZF1DXbbu94YBG7Ye']");
         driver.findElement(locatorBtnPlayListArg).click();
-        Thread.sleep(3000);
+
         //Extraer texto deseado de la play list buscada
         String mensaje = driver.findElement(By.xpath("//span[@class='rEN7ncpaUeSGL9z0NGQR']")).getText();
         System.out.println("Mensaje: "+mensaje);
-        Thread.sleep(2000);
+
 
         //Btn Play a la lista
         By locatorBtnPlay = By.xpath("//button[@class='Button-sc-qlcn5g-0 hCReiC']");
@@ -70,16 +73,16 @@ public class SeleccionarPlayList {
         //Btn Buscar
         By locatorBtnBuscar = By.xpath("(//ul/li[@class='LU0q0itTx2613uiATSig InvalidDropTarget'])[2]");
         driver.findElement(locatorBtnBuscar).click();
-        Thread.sleep(3000);
+
 
         //Ingresar texto en el campo Buscar
         By locatorInputBuscar = By.xpath("//input[@class='Type__TypeElement-sc-goli3j-0 ieTwfQ QO9loc33XC50mMRUCIvf']");
         driver.findElement(locatorInputBuscar).sendKeys("Top 50 mas escuchado Chile");
-        Thread.sleep(2000);
+
         //Extraer texto deseado de la play list buscada
         String mensaje2 = driver.findElement(By.xpath("//a[@class='Nqa6Cw3RkDMV8QnYreTr']")).getText();
         System.out.println("Mensaje: "+mensaje2);
-        Thread.sleep(2000);
+
 
         driver.quit();
 
