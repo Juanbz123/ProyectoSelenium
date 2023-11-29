@@ -33,7 +33,7 @@ public class EjemploSpotify {
 
         driver.findElement(By.partialLinkText("Usar el n")).click();
 
-        driver.findElement(By.id("phonelogin-phonenumber")).sendKeys("380491548211349");
+        driver.findElement(By.id("phonelogin-phonenumber")).sendKeys("380491518211249");
 
         driver.findElement(By.id("phonelogin-button")).click();
 
