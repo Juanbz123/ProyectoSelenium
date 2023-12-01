@@ -71,4 +71,54 @@ public class MetodosGenericos {
         }
     }
 
+    public static void waitImplicit(int time) {
+        try {
+            System.out.println("Esperando elemento");
+            DriverContext.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
+        } catch (Exception var3) {
+
+            System.out.println("Espera no cumplida");
+        }
+    }
+    public static void waitExplicit(WebElement elementName, int time) {
+        try {
+            System.out.println("Esperando elemento");
+            WebDriverWait myWaitVar = new WebDriverWait(DriverContext.getDriver(), Duration.ofSeconds(time));
+            myWaitVar.until(ExpectedConditions.visibilityOfAllElements(elementName));
+        } catch (Exception var3) {
+            System.out.println("Espera no cumplida");
+        }
+    }
+
+    public static void sendKeys(WebElement element, int timeout, String texto){
+        try{
+            if(MetodosGenericos.visualizarObjeto(element,timeout)){
+                element.sendKeys(texto);
+                System.out.println("se escribe el valor : " + texto +" en el elemento: " + element);
+            }
+            else {
+                Assertions.fail("fallo la escritura en el elemento: " + element);
+            }}
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void cambiarIFrame(String nombreIFrame) {
+        try {
+            DriverContext.getDriver().switchTo().frame(nombreIFrame);
+        } catch (Exception e) {
+            Assertions.fail("No se pudo cambiar al iframe: " + nombreIFrame);
+        }
+    }
+
+    public static void esperar(int tiempo) {
+        try {
+            System.out.println("Esperando: " + tiempo + "s");
+            Thread.sleep(tiempo * 1000L);
+        } catch (InterruptedException io) {
+            System.out.println(">>> " + io);
+        }
+    }
+
 }
