@@ -20,7 +20,6 @@ public class EvaluaciónSelenieumBrizuelaJuan {
         System.setProperty("webDriver.chrome.driver",rutaDriver);
         driver = new ChromeDriver();
         driver.get("https://www.papajohns.cl/");
-        MetodosGenericos.waitImplicit(10);
         driver.manage().window().maximize();
     }
 
@@ -29,7 +28,7 @@ public class EvaluaciónSelenieumBrizuelaJuan {
         driver.quit();
     }
 
-    @Test
+  /*  @Test
     public void CP001_RegistroExitoso(){
 
     }
@@ -52,7 +51,7 @@ public class EvaluaciónSelenieumBrizuelaJuan {
     @Test
     public void CP005_AñadirPizzaCarrito(){
 
-    }
+    }*/
 }
 
 
